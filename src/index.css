@@ -157,5 +157,35 @@ body {
     color: #e0f2fe;
     cursor: pointer;
   }
+  .hero-heading {
+    text-transform: uppercase;
+    font-family: 'zentry';
+    font-weight: 700;
+    font-size: 3rem;
+
+  }
+
+  @media (min-width: 640px) {
+    .hero-heading {
+      right: 2.5rem;
+      font-size: 4.5rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-heading {
+      font-size: 6rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-heading {
+      font-size: 12rem;
+    }
+  }
+.special-font b {
+    font-family: "Zentry";
+    font-feature-settings: "ss01" on;
+  }
 
 }
