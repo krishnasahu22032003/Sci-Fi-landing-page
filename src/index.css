@@ -8,6 +8,9 @@ body {
   background-color: #000;
   color: white;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 @font-face {
   font-family: 'circular-web';

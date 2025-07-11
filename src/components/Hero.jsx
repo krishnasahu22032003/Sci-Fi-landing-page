@@ -81,7 +81,7 @@ gsap.from('.hero-brand', {
 
   return (
     <section
-      id="hero"
+      id="home"
       ref={sectionRef}
       className="relative w-screen h-dvh overflow-hidden bg-black text-white"
     >
@@ -135,6 +135,9 @@ gsap.from('.hero-brand', {
       <h1 className="hero-brand special-font hero-heading absolute bottom-6 right-10 z-30 text-f0f2fa text-3xl sm:text-5xl md:text-7xl lg:text-8xl opacity-90 tracking-wider">
         A<b>S</b>TRONYZE
       </h1>
+      
+<div className="absolute bottom-0 left-0 w-full h-32 z-20 bg-gradient-to-b from-transparent to-black pointer-events-none" />
+
     </section>
   );
 };
