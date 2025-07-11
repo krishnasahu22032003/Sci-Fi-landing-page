@@ -1,3 +1,4 @@
+import Features from "./components/Features"
 import Hero from "./components/Hero"
 import InteractiveNeuralUI from "./components/InteractiveNeuralUI"
 import Navbar from "./components/Navbar"
@@ -10,6 +11,7 @@ function App() {
 <Hero/>
 <NeuralOverview/>
 <InteractiveNeuralUI/>
+<Features/>
 </main>
     </>
   )

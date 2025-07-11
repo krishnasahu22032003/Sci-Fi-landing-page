@@ -28,6 +28,7 @@ const memories = [
 
 const InteractiveNeuralUI = () => {
   const sectionRef = useRef(null);
+  const imageRef = useRef(null);
 
   useEffect(() => {
     gsap.utils.toArray('.timeline-node').forEach((el, i) => {
@@ -85,6 +86,24 @@ const InteractiveNeuralUI = () => {
         ease: 'power4.out',
       }
     );
+
+    gsap.fromTo(
+      imageRef.current,
+      { opacity: 0, y: 100, rotateX: 10, scale: 0.95 },
+      {
+        scrollTrigger: {
+          trigger: imageRef.current,
+          start: 'top 90%',
+          toggleActions: 'play none none reverse',
+        },
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        rotateX: 0,
+        duration: 2.2,
+        ease: 'power4.out',
+      }
+    );
   }, []);
 
   return (
@@ -123,11 +142,11 @@ const InteractiveNeuralUI = () => {
         {/* Right Content */}
         <div className="flex-1 flex flex-col items-center lg:items-start gap-6">
           <img
+            ref={imageRef}
             src="/images/memories.png"
             alt="Timeline Visual"
-            className="w-full h-110 ml-30 max-w-md rounded-2xl shadow-2xl "
+            className="w-full h-110 max-w-md rounded-3xl "
           />
-     
         </div>
       </div>
     </section>
