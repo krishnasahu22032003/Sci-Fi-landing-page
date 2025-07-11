@@ -18,7 +18,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="relative w-screen h-dvh overflow-hidden bg-black text-white">
+    <section id="hero"  className="relative w-screen h-dvh overflow-hidden bg-black text-white">
       {/* Background Video */}
       <video
         ref={videoRef}
@@ -35,10 +35,10 @@ const Hero = () => {
 
       {/* Main Content */}
             <div className="relative z-20 flex flex-col items-start justify-start h-full px-6 sm:px-10 md:px-10 pt-24 sm:pt-32 md:pt-40">
-        <h1 className="hero-text hero-heading special-font text-[--color-blue-100] text-6xl font-black leading-tight mb-3 tracking-tight">
+        <h1 className="hero-text hero-heading special-font text-f0f2fa text-6xl font-black leading-tight mb-3 tracking-wide">
            IGNITE <b>I</b>NTELLIGENCE
         </h1>
-        <p className="hero-text text-[--color-blue-50] text-sm md:text-base max-w-sm  font-robert-regular leading-relaxed tracking-wide">
+        <p className="hero-text text-light text-sm md:text-base max-w-sm mb-5 font-robert-regular leading-relaxed tracking-wide">
             Welcome to Astronyze — where neural vision meets motion design. <br />
     Redefining reality, one frame at a time.
         </p>
@@ -51,11 +51,11 @@ const Hero = () => {
       </div>
 
       {/* Bottom Tagline */}
-      <h1 className="special-font hero-heading absolute bottom-6 right-10 z-30 text-blue-100 text-3xl sm:text-5xl md:text-7xl lg:text-8xl opacity-90 tracking-wide">
+      <h1 className="special-font hero-heading absolute bottom-6 right-10 z-30 text-f0f2fa text-3xl sm:text-5xl md:text-7xl lg:text-8xl opacity-90 tracking-wide">
   A<b>S</b>TRONYZE
 </h1>
 
-    </div>
+    </section>
   );
 };
 

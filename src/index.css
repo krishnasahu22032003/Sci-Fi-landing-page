@@ -103,6 +103,12 @@ body {
 .border-blue-100 {
   border-color: var(--color-blue-100);
 }
+.text-f0f2fa {
+  color: #E6ECFF;
+}
+.text-light{
+ color: #C7CCE0
+}
     .indicator-line {
     height: 0.25rem;
     width: 1px;

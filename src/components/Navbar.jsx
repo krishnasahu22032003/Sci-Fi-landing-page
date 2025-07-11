@@ -56,7 +56,8 @@ setisindicatorActive((prev)=>!prev)
         <header className='absolute top-1/2 w-full -translate-y-1/2 ' >
         <nav className='flex size-full p-4 items-center justify-between' > 
 <div className='flex gap-7 items-center' >
-    <img src="/images/logo.png" alt="logo"  className='w-25 h-25 '  />
+    <a href="#home">   <img src="/images/logo.png" alt="logo"  className='w-25 h-25 '  /></a>
+ 
 </div>
 <div className='flex h-full items-center' >
     <div className='hidden md:block' >
