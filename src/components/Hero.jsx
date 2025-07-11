@@ -1,6 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
 import Button from './Button';
 import NeuralParticles from './NeuralParticles';
 import { TiLocationArrow } from 'react-icons/ti';
@@ -17,6 +20,7 @@ const SciFiTerminal = () => (
 const Hero = () => {
   const videoRef = useRef(null);
   const [showTerminal, setShowTerminal] = useState(false);
+  const sectionRef = useRef(null);
 
   // Cursor Glow Movement
   useEffect(() => {
@@ -33,39 +37,64 @@ const Hero = () => {
     return () => window.removeEventListener('mousemove', move);
   }, []);
 
-  // GSAP Text Animations
+  // GSAP Scroll-triggered Text Animations
   useGSAP(() => {
-    gsap.from('.hero-text', {
-      opacity: 0,
-      y: 60,
-      duration: 1.5,
-      stagger: 0.25,
-      ease: 'power4.out',
+    gsap.utils.toArray('.hero-text').forEach((el, i) => {
+      gsap.fromTo(
+        el,
+        {
+          opacity: 0,
+          y: 80,
+          rotateX: 45,
+          transformOrigin: 'top center',
+        },
+        {
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 95%',
+            toggleActions: 'play none none reverse',
+          },
+          opacity: 1,
+          y: 0,
+          rotateX: 0,
+          duration: 2,
+          ease: 'expo.out',
+          delay: i * 0.2,
+        }
+      );
     });
-    gsap.from('.hero-brand', {
-      opacity: 0,
-      y: 20,
-      delay: 1,
-      duration: 1,
-      ease: 'power2.out',
-    });
+gsap.from('.hero-brand', {
+  scrollTrigger: {
+    trigger: sectionRef.current, 
+    start: 'top bottom',         
+    end: 'top center',            
+    toggleActions: 'play none none reverse',
+  },
+  opacity: 0,
+  y: 120,
+  scale: 0.95,
+  duration: 2,
+  delay: 0.6,
+  ease: 'expo.out',
+});
   }, []);
 
   return (
     <section
       id="hero"
+      ref={sectionRef}
       className="relative w-screen h-dvh overflow-hidden bg-black text-white"
     >
-      {/* Particle Neural Grid Background */}
+      
       <NeuralParticles />
 
-      {/* Cursor Glow */}
+    
       <div
         id="cursor-glow"
         className="fixed z-50 w-10 h-10 bg-white/50 blur-2xl rounded-full pointer-events-none"
       />
 
-      {/* Background Video */}
+
       <video
         ref={videoRef}
         src="/videos/hero-1.mp4"
@@ -77,8 +106,6 @@ const Hero = () => {
       />
 
 
-
-      {/* Main Content */}
       <div className="relative z-20 flex flex-col items-start justify-start h-full px-6 sm:px-10 md:px-10 pt-24 sm:pt-32 md:pt-40">
         <h1 className="hero-text hero-heading special-font text-f0f2fa text-6xl font-black leading-tight mb-1 tracking-wide">
           IGNITE <b>I</b>NTELLIGENCE
@@ -88,7 +115,7 @@ const Hero = () => {
           Redefining reality, one frame at a time.
         </p>
 
-        {/* Button with Sci-Fi Terminal */}
+   
         <div
           className="relative flex flex-col items-start"
           onMouseEnter={() => setShowTerminal(true)}
@@ -104,7 +131,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Brand/Tagline at Bottom Right */}
+
       <h1 className="hero-brand special-font hero-heading absolute bottom-6 right-10 z-30 text-f0f2fa text-3xl sm:text-5xl md:text-7xl lg:text-8xl opacity-90 tracking-wider">
         A<b>S</b>TRONYZE
       </h1>
