@@ -38,22 +38,23 @@ const Hero = () => {
         <h1 className="hero-text hero-heading special-font text-[--color-blue-100] text-6xl font-black leading-tight mb-3 tracking-tight">
            IGNITE <b>I</b>NTELLIGENCE
         </h1>
-        <p className="hero-text text-[--color-blue-50] text-sm md:text-base max-w-sm mb-5 font-robert-regular leading-relaxed tracking-wide">
+        <p className="hero-text text-[--color-blue-50] text-sm md:text-base max-w-sm  font-robert-regular leading-relaxed tracking-wide">
             Welcome to Astronyze — where neural vision meets motion design. <br />
     Redefining reality, one frame at a time.
         </p>
         <Button
-          id="slay-now"
-          title="Slay Now"
+          id="launch-mission"
+  title="Launch Mission"
           leftIcon={<TiLocationArrow />}
           containerClass="hero-text bg-[--color-yellow-300] text-black font-bold flex-center gap-2 px-6 py-3 rounded-lg shadow-lg hover:scale-105 transition-transform"
         />
       </div>
 
       {/* Bottom Tagline */}
-      <h1 className="special-font hero-heading absolute bottom-6 right-15 z-30 text-[--color-blue-50] text-3xl sm:text-5xl md:text-7xl lg:text-8xl opacity-90 tracking-tighter">
-        D<b>A</b>WN FALLS
-      </h1>
+      <h1 className="special-font hero-heading absolute bottom-6 right-10 z-30 text-blue-100 text-3xl sm:text-5xl md:text-7xl lg:text-8xl opacity-90 tracking-wide">
+  A<b>S</b>TRONYZE
+</h1>
+
     </div>
   );
 };
