@@ -1,1 +1,93 @@
 @import "tailwindcss";
+
+body {
+  font-family: 'General Sans', sans-serif;
+  width: 100dvw;
+  overflow-x: hidden;
+  background: linear-gradient(160deg, #0a0a0f 0%, #0d0d1c 30%, #000000 100%);
+  background-color: #000;
+  color: white;
+}
+
+@font-face {
+  font-family: 'circular-web';
+  src: url('/public/fonts/circularweb-book.woff2') format('woff2')
+}
+
+@font-face {
+  font-family: 'general';
+  src: url('/public/fonts/general.woff2') format('woff2')
+}
+
+@font-face {
+  font-family: 'robert-regular';
+  src: url('/public/fonts/robert-regular.woff2') format('woff2')
+}
+
+@font-face {
+  font-family: 'robert-medium';
+  src: url('/public/fonts/robert-medium.woff2') format('woff2')
+}
+
+@font-face {
+  font-family: "zentry";
+  src: url("/fonts/zentry-regular.woff2") format("woff2");
+}
+
+:root {
+  /* Typography */
+  --font-display: 'Circular Std', sans-serif;
+  --font-general: 'General Sans', sans-serif;
+  --font-robert-regular: 'Robert-Regular', sans-serif;
+  --font-robert-medium: 'Robert-Medium', sans-serif;
+
+  /* Neutrals / Base */
+  --color-bg-primary: #0a0a0f;
+  --color-bg-secondary: #0d0d1c;
+  --color-surface: #1a1a2e;
+  --color-white: #ffffff;
+  --color-gray-100: #e4e4e7;
+  --color-gray-400: #7b7b8d;
+
+  /* Blues */
+  --color-blue-50: #dfefff;
+  --color-blue-100: #a8cbff;
+  --color-blue-300: #3b82f6;     /* Vibrant */
+  --color-blue-500: #1e3a8a;     /* Deep blue core */
+  --color-blue-glow: #0070f3;
+
+  /* Violets / Neons */
+  --color-violet-100: #dcd0ff;
+  --color-violet-300: #6d28d9;
+  --color-violet-500: #5724ff;
+  --color-violet-neon: #9f00ff;
+
+  /* Yellow / Electric Accent */
+  --color-yellow-100: #c6ff00;
+  --color-yellow-300: #edff66;
+  --color-yellow-glow: #fff54f;
+
+  /* Accent Glows */
+  --color-accent-cyan: #00ffe7;
+  --color-accent-pink: #ff00cc;
+  --color-glow-soft: rgba(93, 210, 255, 0.2);
+  --color-glow-strong: rgba(100, 255, 255, 0.35);
+}
+
+
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-general {
+  font-family: var(--font-general);
+}
+
+.font-robert-regular {
+  font-family: var(--font-robert-regular);
+}
+
+.font-robert-medium {
+  font-family: var(--font-robert-medium);
+}

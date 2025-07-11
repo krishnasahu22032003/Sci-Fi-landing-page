@@ -1,13 +1,10 @@
-
-
+import Navbar from "./components/Navbar"
 function App() {
-
-
   return (
     <>
-      <div className="bg-black text-white">
-        hello hi there
-      </div>
+<main className="min-h-screen w-screen overflow-x-hidden relative" >
+<Navbar/>
+</main>
     </>
   )
 }
