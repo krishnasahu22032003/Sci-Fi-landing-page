@@ -1,4 +1,5 @@
 import Hero from "./components/Hero"
+import InteractiveNeuralUI from "./components/InteractiveNeuralUI"
 import Navbar from "./components/Navbar"
 import NeuralOverview from "./components/NeuralOverview"
 function App() {
@@ -8,6 +9,7 @@ function App() {
 <Navbar/>
 <Hero/>
 <NeuralOverview/>
+<InteractiveNeuralUI/>
 </main>
     </>
   )
