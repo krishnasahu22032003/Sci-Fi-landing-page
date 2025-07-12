@@ -1,3 +1,4 @@
+import CtaSection from "./components/CtaSection"
 import Features from "./components/Features"
 import Hero from "./components/Hero"
 import InteractiveNeuralUI from "./components/InteractiveNeuralUI"
@@ -14,6 +15,7 @@ function App() {
 <InteractiveNeuralUI/>
 <Features/>
 <UseCases/>
+<CtaSection/>
 </main>
     </>
   )
