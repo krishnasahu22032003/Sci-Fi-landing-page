@@ -1,5 +1,6 @@
 import CtaSection from "./components/CtaSection"
 import Features from "./components/Features"
+import FooterSection from "./components/FooterSection"
 import Hero from "./components/Hero"
 import InteractiveNeuralUI from "./components/InteractiveNeuralUI"
 import Navbar from "./components/Navbar"
@@ -16,6 +17,7 @@ function App() {
 <Features/>
 <UseCases/>
 <CtaSection/>
+<FooterSection/>
 </main>
     </>
   )

@@ -39,7 +39,7 @@ const CtaSection = () => {
   useGsapRevealCTA();
 
   return (
-    <section className="relative py-28 bg-black overflow-hidden z-10">
+    <section id="transmission" className="relative py-28 bg-black overflow-hidden z-10">
       {/* Background Gradients */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0b0b11] via-[#050508] to-black" />
       <div className="absolute inset-0 z-0 pointer-events-none bg-[radial-gradient(ellipse_at_top,_rgba(0,140,255,0.05)_0%,_transparent_65%)]" />
