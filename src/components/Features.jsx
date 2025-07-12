@@ -7,22 +7,17 @@ const Bentotilt = ({ children, className = "" }) => {
 
   const handleMouseMove = (e) => {
     if (!itemRef.current) return;
-
     const { left, top, width, height } = itemRef.current.getBoundingClientRect();
-
     const relativeX = (e.clientX - left) / width;
     const relativeY = (e.clientY - top) / height;
-
     const tiltX = (relativeY - 0.5) * 5;
     const tiltY = (relativeX - 0.5) * -5;
-
-    const newTransform = `perspective(700px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(.98, .98, .98)`;
-    setTransformStyle(newTransform);
+    setTransformStyle(
+      `perspective(700px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(.98, .98, .98)`
+    );
   };
 
-  const handleMouseLeave = () => {
-    setTransformStyle("");
-  };
+  const handleMouseLeave = () => setTransformStyle("");
 
   return (
     <div
@@ -37,97 +32,123 @@ const Bentotilt = ({ children, className = "" }) => {
   );
 };
 
-const Bentocard = ({ src, title, description }) => {
-  return (
-    <div className="relative size-full">
-      <video
-        src={src}
-        loop
-        playsInline
-        muted
-        autoPlay
-        className="absolute left-0 top-0 size-full object-cover object-center"
-      />
-
-      <div className="relative z-10 flex flex-col p-5 size-full justify-between text-[--color-blue-50]">
-        <h1 className="bento-title special-font text-2xl md:text-3xl font-bold text-[--color-blue-100]">
-          {title}
-        </h1>
-        {description && (
-          <p className="mt-3 max-w-64 text-sm md:text-base opacity-80">
-            {description}
-          </p>
-        )}
-      </div>
+const ImageCard = ({ imgSrc, title, description }) => (
+  <div className="relative h-full w-full overflow-hidden rounded-2xl">
+    <img
+      src={imgSrc}
+      alt="Feature"
+      className="absolute inset-0 h-full w-full object-cover object-center  transition-transform duration-700 hover:scale-100"
+    />
+    <div className="relative z-10 flex h-full w-full flex-col justify-between p-5  bg-black/30 text-white">
+      <h1 className="bento-title special-font text-2xl md:text-3xl font-bold text-[--color-blue-100]">
+        {title}
+      </h1>
+      {description && (
+        <p className="mt-3 max-w-64 text-sm md:text-base opacity-80">
+          {description}
+        </p>
+      )}
     </div>
-  );
-};
+  </div>
+);
+
+const VideoCard = ({ src, title, description }) => (
+  <div className="relative size-full">
+    <video
+      src={src}
+      loop
+      playsInline
+      muted
+      autoPlay
+      className="absolute left-0 top-0 size-full object-cover object-center"
+    />
+    <div className="relative z-10 flex flex-col p-5 size-full justify-between text-[--color-blue-50]">
+      <h1 className="bento-title special-font text-2xl md:text-3xl font-bold text-[--color-blue-100]">
+        {title}
+      </h1>
+      {description && (
+        <p className="mt-3 max-w-64 text-sm md:text-base opacity-80">
+          {description}
+        </p>
+      )}
+    </div>
+  </div>
+);
 
 const Features = () => {
   return (
-    <section className=" py-28">
-      <div className="container mx-auto px-4 md:px-10">
+    <section className="relative py-28 bg-black overflow-hidden">
+      {/* Subtle radial light overlay */}
+      <div className="absolute inset-0 z-0 pointer-events-none bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.03)_0%,_transparent_70%)]" />
+
+      <div className="relative z-10 container mx-auto px-4 md:px-10">
         <div className="px-5 pb-24">
           <p className="font-display text-lg text-[--color-blue-50]">
             A world where neural interfaces craft the UI.
           </p>
-
           <p className="max-w-md font-display text-lg text-[--color-blue-50] opacity-50">
             Dive into visual cognition — blending neural data with artistic perception, forging the future of interface evolution.
           </p>
         </div>
 
+        {/* MAIN VIDEO HERO */}
         <Bentotilt className="border border-[--color-violet-500]/30 relative mb-7 h-96 w-full overflow-hidden rounded-2xl md:h-[65vh] shadow-xl">
-          <Bentocard
-            src="https://res.cloudinary.com/dq6gs5w21/video/upload/f_auto,q_auto/v1750270967/featuresss-1_k79rab.mp4"
+          <VideoCard
+            src="/videos/video-1.mp4"
             title={<>Reactive <b>Synapse</b></>}
             description="Interact with our intelligent neural interface where perception and motion react in sync."
           />
         </Bentotilt>
 
+        {/* IMAGE GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Bentotilt className="row-span-1 md:col-span-1 md:row-span-2">
-            <Bentocard
-              src="https://res.cloudinary.com/dq6gs5w21/video/upload/f_auto,q_auto/v1750270953/features-2_pk2bol.mp4"
+          <Bentotilt className="row-span-1 md:col-span-1 md:row-span-2 h-[450px]">
+            <ImageCard
+              imgSrc="/images/feature-1.jpg"
               title={<>Visual <b>Encoding</b></>}
               description="Real-time AI transforms cognition into dynamic motion aesthetics."
             />
           </Bentotilt>
 
-          <Bentotilt className="md:col-span-1">
-            <Bentocard
-              src="https://res.cloudinary.com/dq6gs5w21/video/upload/f_auto,q_auto/v1750270934/feature-3_b1d1uk.mp4"
+          <Bentotilt className="md:col-span-1 h-[450px]">
+            <ImageCard
+              imgSrc="/images/feature-2.jpg"
               title={<>Gaze <b>Sync</b></>}
               description="Every movement aligns with the user’s focus, enhancing intuitive interaction."
             />
           </Bentotilt>
 
-          <Bentotilt className="md:col-span-1">
-            <Bentocard
-              src="https://res.cloudinary.com/dq6gs5w21/video/upload/f_auto,q_auto/v1750270938/feature-4_m0q2lw.mp4"
+          <Bentotilt className="md:col-span-1 h-[450px]">
+            <ImageCard
+              imgSrc="/images/feature-3.jpg"
               title={<>Emotive <b>Flow</b></>}
               description="Interface evolves as it senses emotional flux via neural AI feedback."
             />
           </Bentotilt>
         </div>
 
+        {/* FINAL ROW */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
           <Bentotilt>
-            <div className="flex flex-col size-full justify-between bg-[--color-violet-300] p-5 rounded-2xl shadow-md">
-              <h1 className="bento-title special-font max-w-64 text-black text-2xl font-bold">
-                More Coming Soon
-              </h1>
-              <TiLocationArrow className="m-5 scale-[4] self-end text-black" />
+            <div className="flex flex-col size-full justify-between rounded-2xl p-6 shadow-lg bg-gradient-to-br from-[--color-violet-400] via-[--color-blue-500] to-[#100026] text-white relative overflow-hidden">
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/10 via-purple-600/20 to-transparent opacity-30 pointer-events-none z-0" />
+              <div className="relative z-10 flex flex-col gap-4">
+                <h1 className="text-3xl md:text-4xl special-font font-bold text-white drop-shadow-[0_0_5px_rgba(255,255,255,0.4)]">
+                  More <span className="text-[--color-blue-100]">Coming Soon</span>
+                </h1>
+                <p className="text-white/80 text-sm max-w-xs">
+                  We're working on even more neural-powered visual features for the next-gen UI.
+                </p>
+              </div>
+              <TiLocationArrow className="relative z-10 mt-4 self-end scale-[4] text-white/70 transition-all hover:text-[--color-blue-100] hover:rotate-12" />
             </div>
           </Bentotilt>
 
-          <Bentotilt>
-            <video
-              src="https://res.cloudinary.com/dq6gs5w21/video/upload/f_auto,q_auto/v1750270950/hero-3_zgagqm.mp4"
-              loop
-              muted
-              autoPlay
-              className="size-full object-cover object-center rounded-2xl shadow-md"
+          <Bentotilt className="h-[450px]">
+            <ImageCard
+              imgSrc="/images/feature-4.jpg"
+              title={<>Neural <b>Exploration</b></>}
+              description="Layered cognition mapping next-gen user awareness."
             />
           </Bentotilt>
         </div>

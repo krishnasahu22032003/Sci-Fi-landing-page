@@ -143,7 +143,7 @@ const InteractiveNeuralUI = () => {
         <div className="flex-1 flex flex-col items-center lg:items-start gap-6">
           <img
             ref={imageRef}
-            src="/images/memories.png"
+            src="/images/memories-1.jpg"
             alt="Timeline Visual"
             className="w-full h-110 max-w-md rounded-3xl "
           />
