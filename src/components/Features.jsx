@@ -37,11 +37,12 @@ const Bentotilt = ({ children, className = "" }) => {
 };
 
 const ImageCard = ({ imgSrc, title, description }) => (
-  <div className="relative h-full w-full overflow-hidden rounded-2xl">
+  <div className="relative h-full w-full overflow-hidden rounded-2xl group">
     <img
+      loading="lazy"
       src={imgSrc}
       alt="Feature"
-      className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-1000 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:scale-105 will-change-transform"
+      className="absolute inset-0 h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-[1200ms] ease-[cubic-bezier(0.33,1,0.68,1)] will-change-transform"
     />
     <div className="relative z-10 flex h-full w-full flex-col justify-between p-5 bg-black/30 text-white">
       <h1 className="bento-title special-font text-2xl md:text-3xl font-bold text-[--color-blue-100]">
@@ -82,9 +83,9 @@ const Features = () => {
     items.forEach((el, i) => {
       gsap.fromTo(
         el,
-        { opacity: 0, y: 60, scale: 0.98 },
+        { autoAlpha: 0, y: 60, scale: 0.98 },
         {
-          opacity: 1,
+          autoAlpha: 1,
           y: 0,
           scale: 1,
           duration: 1.2,
@@ -94,12 +95,13 @@ const Features = () => {
             trigger: el,
             start: "top 85%",
             toggleActions: "play none none reset",
+            once: true,
           },
         }
       );
     });
 
-    return () => ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
   }, []);
 
   return (
@@ -116,7 +118,6 @@ const Features = () => {
           </p>
         </div>
 
-        {/* MAIN VIDEO CARD */}
         <Bentotilt className="border border-[--color-violet-500]/30 relative mb-7 h-96 w-full overflow-hidden rounded-2xl md:h-[65vh] shadow-xl">
           <VideoCard
             src="/videos/video-1.mp4"
@@ -125,7 +126,6 @@ const Features = () => {
           />
         </Bentotilt>
 
-        {/* THREE MAIN IMAGE CARDS */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <Bentotilt className="row-span-1 md:col-span-1 md:row-span-2 h-[450px]">
             <ImageCard
@@ -152,7 +152,6 @@ const Features = () => {
           </Bentotilt>
         </div>
 
-        {/* FINAL ROW */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
           <Bentotilt>
             <div className="flex flex-col size-full justify-between rounded-2xl p-6 shadow-lg bg-gradient-to-br from-[--color-violet-400] via-[--color-blue-500] to-[#100026] text-white relative overflow-hidden">
