@@ -3,7 +3,7 @@
 NeuroSpark is a futuristic, perception-driven interface framework inspired by the fusion of **brain-computer interaction**, **visual cognition**, and **emotive design**. Built with **React**, **TailwindCSS**, and **GSAP**, it offers a fully responsive UI that reacts to user gaze, emotion, and motion — pioneering the future of intuitive digital interaction.
 
 ![NeuroSpark Preview](./public/images/screenshot.png)  
-<sup>📸 Add your live screenshot in place of `screenshot.png`</sup>
+
 
 ---
 
