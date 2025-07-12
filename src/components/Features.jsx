@@ -1,5 +1,9 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { TiLocationArrow } from "react-icons/ti";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Bentotilt = ({ children, className = "" }) => {
   const [transformStyle, setTransformStyle] = useState("");
@@ -21,7 +25,7 @@ const Bentotilt = ({ children, className = "" }) => {
 
   return (
     <div
-      className={className}
+      className={className + " feature-animate"}
       ref={itemRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -37,9 +41,9 @@ const ImageCard = ({ imgSrc, title, description }) => (
     <img
       src={imgSrc}
       alt="Feature"
-      className="absolute inset-0 h-full w-full object-cover object-center  transition-transform duration-700 hover:scale-100"
+      className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 hover:scale-100"
     />
-    <div className="relative z-10 flex h-full w-full flex-col justify-between p-5  bg-black/30 text-white">
+    <div className="relative z-10 flex h-full w-full flex-col justify-between p-5 bg-black/30 text-white">
       <h1 className="bento-title special-font text-2xl md:text-3xl font-bold text-[--color-blue-100]">
         {title}
       </h1>
@@ -76,13 +80,38 @@ const VideoCard = ({ src, title, description }) => (
 );
 
 const Features = () => {
+  useEffect(() => {
+    const elements = gsap.utils.toArray(".feature-animate");
+
+    elements.forEach((el, i) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          delay: i * 0.1,
+          scrollTrigger: {
+            trigger: el,
+            start: "top 90%",
+            toggleActions: "play none none reset",
+            scrub: false,
+            markers: false,
+          },
+        }
+      );
+    });
+
+    return () => ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  }, []);
+
   return (
     <section className="relative py-28 bg-black overflow-hidden">
-      {/* Subtle radial light overlay */}
       <div className="absolute inset-0 z-0 pointer-events-none bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.03)_0%,_transparent_70%)]" />
 
       <div className="relative z-10 container mx-auto px-4 md:px-10">
-        <div className="px-5 pb-24">
+        <div className="px-5 pb-24 feature-animate">
           <p className="font-display text-lg text-[--color-blue-50]">
             A world where neural interfaces craft the UI.
           </p>
@@ -91,7 +120,6 @@ const Features = () => {
           </p>
         </div>
 
-        {/* MAIN VIDEO HERO */}
         <Bentotilt className="border border-[--color-violet-500]/30 relative mb-7 h-96 w-full overflow-hidden rounded-2xl md:h-[65vh] shadow-xl">
           <VideoCard
             src="/videos/video-1.mp4"
@@ -100,7 +128,6 @@ const Features = () => {
           />
         </Bentotilt>
 
-        {/* IMAGE GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <Bentotilt className="row-span-1 md:col-span-1 md:row-span-2 h-[450px]">
             <ImageCard
@@ -127,7 +154,6 @@ const Features = () => {
           </Bentotilt>
         </div>
 
-        {/* FINAL ROW */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
           <Bentotilt>
             <div className="flex flex-col size-full justify-between rounded-2xl p-6 shadow-lg bg-gradient-to-br from-[--color-violet-400] via-[--color-blue-500] to-[#100026] text-white relative overflow-hidden">

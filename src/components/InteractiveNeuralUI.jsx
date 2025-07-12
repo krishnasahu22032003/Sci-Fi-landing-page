@@ -109,7 +109,7 @@ const InteractiveNeuralUI = () => {
   return (
     <section
       ref={sectionRef}
-      id="neural-timeline"
+      id="timeline"
       className="relative w-full py-28 px-6 sm:px-10 md:px-16 lg:px-24 bg-gradient-to-b from-black via-zinc-900 to-black text-white overflow-hidden"
     >
       <div className="max-w-6xl mx-auto text-center mb-20 relative z-10">
@@ -143,7 +143,7 @@ const InteractiveNeuralUI = () => {
         <div className="flex-1 flex flex-col items-center lg:items-start gap-6">
           <img
             ref={imageRef}
-            src="/images/memories-1.jpg"
+            src="/images/memories-1.png"
             alt="Timeline Visual"
             className="w-full h-110 max-w-md rounded-3xl "
           />
